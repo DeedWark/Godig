@@ -6,6 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"net"
+	"os"
 	"strings"
 )
 
@@ -95,6 +96,7 @@ Use [digo help] to show this message
 	domain := flag.Arg(0)
 	if domain == "" {
 		fmt.Println(help)
+		os.Exit(1)
 	}
 	selector := flag.Arg(1)
 	if selector == "" {
