@@ -84,10 +84,10 @@ func main() {
 	help :=
 		`
 MUDIG - Most Useful DIG commands in same script
-    Usage: digo [domain] [selector]
+        Usage:   digo [domain] [selector]
 
-    Example: digo domain.com
-             digo domain.com protonmail
+        Example: digo domain.com
+                 digo domain.com protonmail
 
 Use [digo help] to show this message
 `
