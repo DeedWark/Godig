@@ -21,7 +21,7 @@ You can now launch this program (without build)
 go run godig.go domain.com
 ```
 
-## Usage (Multiline content is possible)
+## Usage
 
 ```bash
 godig domain.com mailjet
