@@ -6,7 +6,6 @@ import (
 	"flag"
 	"fmt"
 	"net"
-	"os"
 	"strings"
 )
 
@@ -16,16 +15,11 @@ const (
 )
 
 func afinder(domain string) {
-	a, err := net.LookupIP(domain)
-	if err != nil {
-		fmt.Println("Cannot find this domain")
-		os.Exit(1)
-	}
+	a, _ := net.LookupIP(domain)
+	fmt.Println(bold + "DNS (A):" + end)
 	if len(a) == 0 {
-		fmt.Println(bold + "DNS (A):" + end)
 		fmt.Println("No DNS found")
 	} else {
-		fmt.Println(bold + "DNS (A):" + end)
 		for _, ip := range a {
 			fmt.Println(ip.String())
 		}
@@ -78,7 +72,7 @@ func dkimfinder(domain string, selector string) {
 	fmt.Println("")
 	fmt.Println(bold + "DKIM key:" + end)
 	if len(dkim) == 0 {
-		fmt.Println("No DKIM key found")
+		fmt.Println("No DKIM key found" + "\n")
 	} else {
 		for _, dkimk := range dkim {
 			fmt.Println(dkimk)
