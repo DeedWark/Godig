@@ -30,7 +30,6 @@ func afinder(domain string) {
 			fmt.Println(ip.String())
 		}
 	}
-
 }
 
 func mxfinder(domain string) {
