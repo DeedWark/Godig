@@ -102,7 +102,7 @@ func main() {
 
 	flag.Parse()
 	domain := flag.Arg(0)
-	if domain == "" {
+	if domain == "" || domain == "help" {
 		fmt.Println(help)
 		os.Exit(1)
 	}
