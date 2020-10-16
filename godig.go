@@ -73,10 +73,6 @@ func dmarcfinder(domain string) {
 }
 
 func dkimfinder(domain string, selector string) {
-	//selector := os.Args(2)
-	//if flag.Arg(2) == "" {
-	//	selector = "google"
-	//}
 	dkim, _ := net.LookupTXT(selector + "._domainkey." + domain)
 	fmt.Println("")
 	fmt.Println(bold + "DKIM key:" + end)
