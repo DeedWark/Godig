@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -90,16 +91,15 @@ func dkimfinder(domain string, selector string) {
 }
 
 func main() {
-	help :=
-		`
-MUDIG - Most Useful DIG commands in same script
-        Usage:   digo [domain] [selector]
 
-        Example: digo domain.com
-                 digo domain.com protonmail
+	name := filepath.Base(os.Args[0])
 
-Use [digo help] to show this message
-`
+	help := "GODIG - Domain DNS Resolver in Golang" + "\r\n" +
+		"        Usage:   " + name + " [domain] [selector]" + "\r\n\r\n" +
+		"        Example: " + name + " domain.com" + "\r\n" +
+		"                 " + name + " domain.com mailjet" + "\r\n\r\n" +
+		"Use [" + name + " help] to show this message"
+
 	flag.Parse()
 	domain := flag.Arg(0)
 	if domain == "" {
