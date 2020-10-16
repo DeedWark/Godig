@@ -69,9 +69,17 @@ func dmarcfinder(domain string) {
 }
 
 func dkimfinder(domain string, selector string) {
+	//selector := os.Args(2)
+	//if flag.Arg(2) == "" {
+	//	selector = "google"
+	//}
 	dkim, _ := net.LookupTXT(selector + "._domainkey." + domain)
 	fmt.Println("")
 	fmt.Println(bold + "DKIM key:" + end)
+	if flag.Arg(1) == "" {
+		fmt.Println("Add a selector (ex: domain.com selector)")
+		fmt.Println("Try with Google as selector:" + "\n")
+	}
 	if len(dkim) == 0 {
 		fmt.Println("No DKIM key found" + "\n")
 	} else {
@@ -98,6 +106,7 @@ Use [digo help] to show this message
 		fmt.Println(help)
 		os.Exit(1)
 	}
+
 	selector := flag.Arg(1)
 	if selector == "" {
 		selector = "google"
