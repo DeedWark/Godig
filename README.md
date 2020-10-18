@@ -1,7 +1,7 @@
 # Godig (Golang)
 
 Domain resolver (DNS)
-[![asciicast](https://asciinema.org/a/2Sc2uQqRosGsC97IbrjbFqsvE.svg)](https://asciinema.org/a/2Sc2uQqRosGsC97IbrjbFqsvE)
+[![asciicast](https://asciinema.org/a/2Sc2uQqRosGsC97IbrjbFqsvE?t=4.svg)](https://asciinema.org/a/2Sc2uQqRosGsC97IbrjbFqsvE)
 
 ## How to use
 You can build this program
