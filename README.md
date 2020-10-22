@@ -10,10 +10,18 @@ go build -o godig godig.go
 #and execute the built program
 ./godig domain.com
 ```
+
 - Windows
 ```bash
 env GOOS=windows GOARCH=amd64 go build -o godig.exe godig.go
 .\godig.exe domain.com
+```
+
+**You can make this script easier**
+```bash
+sudo mv godig /usr/bin/godig
+#Just lanch the script
+godig domain.com
 ```
 
 You can now launch this program (without build)
