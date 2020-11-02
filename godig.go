@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"net"
 	"os"
-	"path/filepath"
 	"strings"
 )
 
@@ -91,7 +90,7 @@ func dkimfinder(domain string, selector string) {
 
 func main() {
 
-	name := filepath.Base(os.Args[0])
+	name := os.Args[0]
 
 	help := "GODIG - Domain DNS Resolver in Golang" + "\r\n" +
 		"        Usage:   " + name + " [domain] [selector]" + "\r\n\r\n" +
