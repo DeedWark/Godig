@@ -67,3 +67,5 @@ No DKIM key found
 
 ## Me
 [LinkedIn](https://fr.linkedin.com/in/kenji-duriez-9b93bb141)
+
+[![Golang](https://siasky.net/fALkLQPtiy4kY3qkF0hRxP9L4iGJHMRyT-4YhotbCPv2ng)
