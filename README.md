@@ -1,10 +1,6 @@
 # Godig (Golang)
 
-<p align="center">
-  <a href="https://github.com/DeedWark/Godig">
-    <img alt="godig" src="https://siasky.net/GACkeDMe0s2sAYOM1wJS5gXo3Cgs_g9t1yzC7i4hCbJQfw" width="128">
-  </a>
-</p>
+![Godig](https://siasky.net/GACkeDMe0s2sAYOM1wJS5gXo3Cgs_g9t1yzC7i4hCbJQfw)
 Domain resolver (DNS) -> Like DIG
 
 This script is equivalent to :
