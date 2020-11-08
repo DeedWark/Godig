@@ -1,6 +1,8 @@
 # Godig (Golang)
 
-Domain resolver (DNS)
+Domain resolver (DNS) -> Like DIG
+This script is equivalent to :
+`dig a domain.com +short && dig mx domain.com +short && dig txt domain.com +short && dig _dmarc.domain.com TXT +short && dig selector._domainkey.domain.com TXT +short`
 
 ## How to use
 You can build this program
