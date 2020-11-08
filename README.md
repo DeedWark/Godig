@@ -1,6 +1,12 @@
 # Godig (Golang)
-![Golang](https://siasky.net/GACkeDMe0s2sAYOM1wJS5gXo3Cgs_g9t1yzC7i4hCbJQfw)
+
+<p align="center">
+  <a href="https://github.com/DeedWark/Godig">
+    <img alt="godig" src="https://siasky.net/GACkeDMe0s2sAYOM1wJS5gXo3Cgs_g9t1yzC7i4hCbJQfw" width="128">
+  </a>
+</p>
 Domain resolver (DNS) -> Like DIG
+
 This script is equivalent to :
 `dig a domain.com +short && dig mx domain.com +short && dig txt domain.com +short && dig _dmarc.domain.com TXT +short && dig selector._domainkey.domain.com TXT +short`
 
