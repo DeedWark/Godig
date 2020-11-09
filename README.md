@@ -1,6 +1,6 @@
 # Godig (Golang)
 
-![Godig](https://siasky.net/IADLxjg0R1JGtbiZouc5pK3s6g6HmEYiDZw4rWcjcXByfg)
+![Godig](https://siasky.net/GACPlZEZJgSV_6GEgmG2N0eEZ8fAuAydgSnDxg59bi3Lkg)
 Domain resolver (DNS) -> Like DIG
 
 This script is equivalent to :
