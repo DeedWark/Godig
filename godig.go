@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"net"
 	"os"
-	"strings"
 )
 
 const (
@@ -39,8 +38,7 @@ func mxfinder(domain string) {
 		fmt.Println("No MX found")
 	} else {
 		for _, mx := range mxs {
-			mxRaw := strings.TrimRight(mx.Host, ".")
-			fmt.Println(mx.Pref, mxRaw)
+			fmt.Println(mx.Pref, mx.Host)
 		}
 	}
 }
