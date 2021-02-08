@@ -7,6 +7,17 @@ This script is equivalent to :
 `dig a domain.com +short && dig mx domain.com +short && dig txt domain.com +short && dig _dmarc.domain.com TXT +short && dig selector._domainkey.domain.com TXT +short`
 
 ## How to use
+```
+GODIG - Domain DNS Resolver in Golang
+        Usage:   godig [domain] [selector | @IPresolver]
+
+        Example: godig domain.com
+                 godig domain.com mailjet
+                 godig domain.com @8.8.8.8
+
+Use [godig help] to show this message
+```
+
 You can build this program
 - Linux
 ```bash
