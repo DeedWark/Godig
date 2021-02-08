@@ -117,7 +117,6 @@ func dmarcfinder(domain string) {
 }
 
 func dkimfinder(domain string, selector string) {
-	fmt.Printf("%v is the selector", selector)
 	dkim, _ := net.LookupTXT(selector + "._domainkey." + domain)
 	fmt.Println("")
 	fmt.Println(bold + "DKIM key:" + end)
@@ -128,7 +127,7 @@ func dkimfinder(domain string, selector string) {
 	}
 
 	if len(dkim) == 0 {
-		fmt.Println("No DKIM key found" + "\n")
+		fmt.Println("No DKIM key found with " + bold + selector + end + " as selector" + "\n")
 	} else {
 		for _, dkimk := range dkim {
 			fmt.Println(dkimk)
