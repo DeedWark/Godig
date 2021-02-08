@@ -3,10 +3,12 @@
 package main
 
 import (
+	"context"
 	"flag"
 	"fmt"
 	"net"
 	"os"
+	"time"
 )
 
 const (
@@ -18,14 +20,59 @@ const (
 	green  = "\033[32m"
 )
 
+func afinderRes(domain string, resolver string) {
+	r := &net.Resolver{
+		PreferGo: true,
+		Dial: func(ctx context.Context, network, address string) (net.Conn, error) {
+			d := net.Dialer{
+				Timeout: time.Millisecond * time.Duration(10000),
+			}
+			return d.DialContext(ctx, "udp", resolver+":53")
+		},
+	}
+	ip, _ := r.LookupHost(context.Background(), domain)
+
+	fmt.Println(bold + "A field:" + end)
+	if len(ip) == 0 {
+		fmt.Println("No DNS found")
+	} else {
+		for _, ip := range ip {
+			fmt.Println(ip)
+		}
+	}
+}
+
 func afinder(domain string) {
 	a, _ := net.LookupIP(domain)
-	fmt.Println(bold + "DNS (A):" + end)
+	fmt.Println(bold + "A:" + end)
 	if len(a) == 0 {
 		fmt.Println("No DNS found")
 	} else {
 		for _, ip := range a {
 			fmt.Println(ip.String())
+		}
+	}
+}
+
+func mxfinderRes(domain string, resolver string) {
+	r := &net.Resolver{
+		PreferGo: true,
+		Dial: func(ctx context.Context, network, address string) (net.Conn, error) {
+			d := net.Dialer{
+				Timeout: time.Millisecond * time.Duration(10000),
+			}
+			return d.DialContext(ctx, "udp", resolver+":53")
+		},
+	}
+	mxs, _ := r.LookupMX(context.Background(), domain)
+
+	fmt.Println("")
+	fmt.Println(bold + "MX fields:" + end)
+	if len(mxs) == 0 {
+		fmt.Println("No MX found")
+	} else {
+		for _, mx := range mxs {
+			fmt.Println(mx.Pref, mx.Host)
 		}
 	}
 }
@@ -70,13 +117,16 @@ func dmarcfinder(domain string) {
 }
 
 func dkimfinder(domain string, selector string) {
+	fmt.Printf("%v is the selector", selector)
 	dkim, _ := net.LookupTXT(selector + "._domainkey." + domain)
 	fmt.Println("")
 	fmt.Println(bold + "DKIM key:" + end)
-	if flag.Arg(1) == "" {
+
+	if selector == "" || selector == "google" {
 		fmt.Println("Add a selector (ex: domain.com selector)")
 		fmt.Println("Try with " + blue + "G" + red + "o" + yellow + "o" + blue + "g" + green + "l" + red + "e" + end + " as selector:" + "\n")
 	}
+
 	if len(dkim) == 0 {
 		fmt.Println("No DKIM key found" + "\n")
 	} else {
@@ -97,19 +147,44 @@ func main() {
 		"Use [" + name + " help] to show this message"
 
 	flag.Parse()
+
 	domain := flag.Arg(0)
 	if domain == "" || domain == "help" {
 		fmt.Println(help)
-		os.Exit(1)
+		os.Exit(0)
 	}
 
-	selector := flag.Arg(1)
-	if selector == "" {
+	///////////////
+
+	var resolver string
+	var selector string
+	var both string
+
+	// If no selector or resolver
+	both = flag.Arg(1)
+	if both == "" {
+		resolver = ""
 		selector = "google"
+	} else if both[0] == '@' {
+		resolver = both[1:]
+		selector = "google"
+	} else {
+		resolver = ""
+		selector = both
 	}
 
-	afinder(domain)
-	mxfinder(domain)
+	if resolver != "" {
+		afinderRes(domain, resolver)
+	} else {
+		afinder(domain)
+	}
+
+	if resolver != "" {
+		mxfinderRes(domain, resolver)
+	} else {
+		mxfinder(domain)
+	}
+
 	txtfinder(domain)
 	dmarcfinder(domain)
 	dkimfinder(domain, selector)
