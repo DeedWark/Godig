@@ -142,7 +142,7 @@ func main() {
 	help := "GODIG - Domain DNS Resolver in Golang" + "\r\n" +
 		"        Usage:   " + name + " [domain] [selector | @IPresolver]" + "\r\n\r\n" +
 		"        Example: " + name + " domain.com" + "\r\n" +
-		"                 " + name + " domain.com mailjet" + "\r\n\r\n" +
+		"                 " + name + " domain.com mailjet" + "\r\n" +
 		"                 " + name + " domain.com @8.8.8.8" + "\r\n\r\n" +
 		"Use [" + name + " help] to show this message"
 
