@@ -126,8 +126,10 @@ func dkimfinder(domain string, selector string) {
 		fmt.Println("Try with " + blue + "G" + red + "o" + yellow + "o" + blue + "g" + green + "l" + red + "e" + end + " as selector:" + "\n")
 	}
 
-	if len(dkim) == 0 {
+	if len(dkim) == 0 && selector != "google" {
 		fmt.Println("No DKIM key found with " + bold + selector + end + " as selector" + "\n")
+	} else if len(dkim) == 0 && selector == "google" {
+		fmt.Println("No DKIM key found" + "\n")
 	} else {
 		for _, dkimk := range dkim {
 			fmt.Println(dkimk)
