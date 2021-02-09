@@ -44,7 +44,7 @@ func afinderRes(domain string, resolver string) {
 
 func afinder(domain string) {
 	a, _ := net.LookupIP(domain)
-	fmt.Println(bold + "A:" + end)
+	fmt.Println(bold + "A field:" + end)
 	if len(a) == 0 {
 		fmt.Println("No DNS found")
 	} else {
