@@ -139,14 +139,13 @@ func dkimfinder(domain string, selector string) {
 
 func main() {
 
-	name := os.Args[0]
-
 	help := "GODIG - Domain DNS Resolver in Golang" + "\r\n" +
-		"        Usage:   " + name + " [domain] [selector | @IPresolver]" + "\r\n\r\n" +
-		"        Example: " + name + " domain.com" + "\r\n" +
-		"                 " + name + " domain.com mailjet" + "\r\n" +
-		"                 " + name + " domain.com @8.8.8.8" + "\r\n\r\n" +
-		"Use [" + name + " help] to show this message"
+		"        Usage:   godig [domain] [selector | @IPresolver]" + "\r\n\r\n" +
+		"        Example: godig domain.com" + "\r\n" +
+		"                 godig domain.com google" + "\r\n" +
+		"                 godig domain.com @8.8.8.8" + "\r\n" +
+		"                 godig domain.com google @8.8.8.8" + "\r\n\r\n" +
+		"Use [godig help] to show this message"
 
 	flag.Parse()
 
@@ -161,19 +160,32 @@ func main() {
 	var resolver string
 	var selector string
 	var both string
+	var prob string
 
-	// If no selector or resolver
+	// no flags with - or --
 	both = flag.Arg(1)
+	prob = flag.Arg(2)
+
 	if both == "" {
 		resolver = ""
 		selector = "google"
-	} else if both[0] == '@' {
+	} else if both != "" && both[0] == '@' && prob == "" {
 		resolver = both[1:]
 		selector = "google"
-	} else {
+	} else if both != "" && both[0] == '@' && prob != "" {
+		resolver = both[1:]
+		selector = prob
+	} else if both != "" && both[0] != '@' && prob == "" {
 		resolver = ""
 		selector = both
+	} else if both != "" && both[0] != '@' && prob[0] == '@' {
+		resolver = prob[1:]
+		selector = both
+	} else if both != "" && both[0] != '@' && prob[0] != '@' {
+		fmt.Println(help)
 	}
+
+	////
 
 	if resolver != "" {
 		afinderRes(domain, resolver)
