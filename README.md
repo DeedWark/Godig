@@ -47,10 +47,10 @@ You can now launch this program (without build)
 go run godig.go domain.com
 ```
 
-## Usage
+## Output
 
 ```bash
-godig domain.com mailjet
+godig domain.com mail
 
 DNS (A):
 216.58.206.238
