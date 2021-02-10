@@ -14,7 +14,9 @@ GODIG - Domain DNS Resolver in Golang
         Example: godig domain.com
                  godig domain.com mailjet
                  godig domain.com @8.8.8.8
-
+                 godig domain.com @8.8.8.8
+		 godig domain.com google @8.8.8.8
+                 
 Use [godig help] to show this message
 ```
 
