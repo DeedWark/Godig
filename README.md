@@ -77,6 +77,16 @@ DKIM key:
 No DKIM key found
 ```
 
+## Docker
+- Build
+```bash
+docker build -t godig .
+```
+- Run
+```bash
+docker run --rm godig domain.com
+```
+
 ## Demo
 [![asciicast](https://asciinema.org/a/2Sc2uQqRosGsC97IbrjbFqsvE.svg)](https://asciinema.org/a/2Sc2uQqRosGsC97IbrjbFqsvE)
 
