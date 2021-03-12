@@ -86,6 +86,10 @@ docker build -t godig .
 ```bash
 docker run --rm godig domain.com
 ```
+- Run without building - Download from Docker Hub
+```bash
+docker run --rm deedwark/godig domain.com
+```
 
 ## Demo
 [![asciicast](https://asciinema.org/a/2Sc2uQqRosGsC97IbrjbFqsvE.svg)](https://asciinema.org/a/2Sc2uQqRosGsC97IbrjbFqsvE)
