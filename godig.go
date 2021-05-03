@@ -1,5 +1,5 @@
-//@Kenji DURIEZ - [DeedWark] - 2020
-//Resolve DNS w/ Domain (A, MX, TXT, DMARC, DKIM)
+// @Kenji DURIEZ - [DeedWark] - 2020
+// Resolve DNS w/ Domain (A, MX, TXT, DMARC, DKIM)
 package main
 
 import (
@@ -181,8 +181,10 @@ func main() {
 	} else if both != "" && both[0] != '@' && prob[0] == '@' {
 		resolver = prob[1:]
 		selector = both
-	} else if both != "" && both[0] != '@' && prob[0] != '@' {
-		fmt.Println(help)
+	} else if both != "" && both[0] != '@' && prob != "" && prob[0] != '@' {
+    		fmt.Println(bold + red + "Syntax error\nTry with default value\n" + end)
+    		resolver = ""
+    		selector = "google"
 	}
 
 	////
