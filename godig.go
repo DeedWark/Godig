@@ -20,6 +20,13 @@ const (
 	green  = "\033[32m"
 )
 
+var (
+	resolver string
+	selector string
+	both     string
+	prob     string
+)
+
 func afinderRes(domain string, resolver string) {
 	r := &net.Resolver{
 		PreferGo: true,
@@ -147,6 +154,10 @@ func main() {
 		"                 godig domain.com google @8.8.8.8" + "\r\n\r\n" +
 		"Use [godig help] to show this message"
 
+	flag.Usage = func() {
+		fmt.Println(help)
+	}
+
 	flag.Parse()
 
 	domain := flag.Arg(0)
@@ -154,13 +165,6 @@ func main() {
 		fmt.Println(help)
 		os.Exit(0)
 	}
-
-	///////////////
-
-	var resolver string
-	var selector string
-	var both string
-	var prob string
 
 	// no flags with - or --
 	both = flag.Arg(1)
