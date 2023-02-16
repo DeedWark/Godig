@@ -1,4 +1,4 @@
-// @Kenji DURIEZ - [DeedWark] - 2020
+// @Kenji - [DeedWark] - 2020
 // Resolve DNS w/ Domain (A, MX, TXT, DMARC, DKIM)
 package main
 
