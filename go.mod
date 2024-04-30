@@ -1,3 +1,3 @@
-module github.com/deedwark/godig/godig.go
+module github.com/DeedWark/godig
 
-go 1.15
+go 1.22.2
